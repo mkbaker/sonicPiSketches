@@ -1,0 +1,42 @@
+live_loop :kick do
+  cue :beat
+  use_bpm 125
+  sample :bd_808
+  sleep 1
+  sample :bd_808
+  sample :sn_zome, amp: 0.2
+  sleep 1
+end
+
+live_loop :hats do
+  sync :beat
+  sample :elec_cymbal, amp: 0.3, hpf: 0.7
+end
+
+
+live_loop :pad do
+  sync :beat
+  with_fx :slicer, smooth: 0.4 do
+    use_synth :fm
+    play_chord [:c3, :eb3, :c3, :eb4 ], attack: 0.5, sustain: 1, decay: 0.5, release: 0.5, amp: 0.5
+    sleep 4
+  end
+end
+
+live_loop :bass do
+  sync :beat
+  sample :bass_hit_c
+  play_pattern_timed [:c1, :c0, :c1, :c2, :c0 ], [0.25,0.75,0.5,0.75,0.25,1]
+end
+
+live_loop :melody do
+  sync :beat
+  with_fx :echo do
+    sample :guit_harmonics
+    play :c3
+    sleep 8
+  end
+end
+
+
+
